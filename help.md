@@ -3,6 +3,24 @@
 - Function parameters name start with an underscore character
 - Private function name start with an underscore character
 
+# Function modifiers
+
+There are different ways to modify function behavior
+
+#### Visibility modifiers
+
+- A **private** function is only accessible by other internal methods declared in the same contract scope
+- An **internal** function is like a private one except it is accessible from legacy contracts
+- A **public** functiuon is accessible for everyone
+- An **external** method is like public one except it can only be called from the outside
+
+#### State modifiers
+
+> Functions set with these modifier don't cost any gas when there are call
+
+- A **view** function don't save or write anything into the blockchain
+- A **pure** function is like a view one except it can't read the blockchain
+
 # Good to know
 
 - uint type is an alias to uint256
@@ -12,8 +30,3 @@
 - There are two ways to save variables
   - The first one is **storage**, storage data are saved into the blockchain
   - The second one is **memory**, memory data are temporary
-- There are four ways to set contract methods visibility
-  - A **public** method is accessible for everyone
-  - A **private** method is only accessible by other internal methods declared in the same contract scope
-  - An **internal** method is like a private one except it is accessible from legacy contracts
-  - An **external** method is like public one except it can only be called from the outside
