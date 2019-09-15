@@ -1,3 +1,5 @@
+pragma solidity >=0.4.19;
+
 /* ERC721 interface from OpenZepellin */
 contract ERC721 {
   event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
