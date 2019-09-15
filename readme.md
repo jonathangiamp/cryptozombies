@@ -125,8 +125,8 @@ miner.stop()
 
 1. First of all, you have to unlock your account to be able to deploy your contract. **WARNING**: Unlock an account is an unsecure/dangerous operation. It's only a develop command, never use it in production!
 
-```
-personal.unlockAccount(web3.eth.coinbase, "<passphrase_used_before", 15000)
+```s
+personal.unlockAccount(personal.listAccounts[0], "<passphrase_used_before>", 15000)
 ```
 
 2. Be sure that you continue to mine.
@@ -154,9 +154,9 @@ truffle console
 6. Within the truffle console, run the following commands to init your contract and start to play with it.
 
 ```
-var dApp
-ZombieOwnership.deployed().then(function(instance) { dApp = instance; })
-dApp // You contract's methods are listed.
+var dApp;
+ZombieOwnership.deployed().then(function(instance) { dApp = instance; });
+dApp; // You contract's methods are listed.
 ```
 
 7. You can now read contracts in contracts directoy and start to play with it. Let's create our first Zombie and eat some CryptoKitties to build an army!
