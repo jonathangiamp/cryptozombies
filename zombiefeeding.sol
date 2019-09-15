@@ -42,8 +42,8 @@ contract ZombieFeeding is ZombieFactory {
     function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal onlyOwnerOf(_zombieId) {
         Zombie storage myZombie = zombies[_zombieId];
         require(_isReady(myZombie), "Your Zombie isn't ready... Please wait until it is rested");
-        _targetDna = _targetDna % dnaModulus;
-        uint newDna = (myZombie.dna + _targetDna) / 2;
+        targetDna = _targetDna % dnaModulus;
+        uint newDna = (myZombie.dna + targetDna) / 2;
         if (keccak256(_species) == keccak256("kitty")) {
             newDna = newDna - newDna % 100 + 99;
         }

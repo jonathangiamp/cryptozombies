@@ -29,21 +29,21 @@ contract ZombieFactory is Ownable {
     mapping (uint => address) public zombieToOwner;
     mapping (address => uint) ownerZombieCount;
 
-    function _createZombie(string _name, uint _dna) internal {
+    function _createZombie(string memory _name, uint _dna) internal {
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
         /* msg is a global variable */
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].add(1);
-        NewZombie(id, _name, _dna);
+        emit NewZombie(id, _name, _dna);
     }
 
-    function _generateRandomDna(string _str) private view returns (uint) {
+    function _generateRandomDna(string memory _str) private view returns (uint) {
         /* keccak is a SHA3 variant, it's use to hash a string */
-        uint rand = uint(keccak256(_str));
+        uint rand = uint(keccak256(bytes(_str)));
         return rand % dnaModulus;
     }
 
-    function createRandomZombie(string _name) public {
+    function createRandomZombie(string memory _name) public {
         require(ownerZombieCount[msg.sender] == 0, "You already have a Zombie");
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
