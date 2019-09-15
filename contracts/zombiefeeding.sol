@@ -22,7 +22,7 @@ contract ZombieFeeding is ZombieFactory {
 
     KittyInterface kittyContract;
 
-    modifier onlyOwnerOf(uint _zombieId) {
+    modifier onlyOwnerOf(uint256 _zombieId) {
         require(msg.sender == zombieToOwner[_zombieId]);
         _;
     }
@@ -39,11 +39,11 @@ contract ZombieFeeding is ZombieFactory {
         return (_zombie.readyTime <= now);
     }
 
-    function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) internal onlyOwnerOf(_zombieId) {
+    function feedAndMultiply(uint256 _zombieId, uint256 _targetDna, string memory _species) internal onlyOwnerOf(_zombieId) {
         Zombie storage myZombie = zombies[_zombieId];
         require(_isReady(myZombie));
-        uint targetDna = _targetDna % dnaModulus;
-        uint newDna = (myZombie.dna + targetDna) / 2;
+        uint256 targetDna = _targetDna % dnaModulus;
+        uint256 newDna = (myZombie.dna + targetDna) / 2;
         if (keccak256(bytes(_species)) == keccak256("kitty")) {
             newDna = newDna - newDna % 100 + 99;
         }
@@ -51,8 +51,8 @@ contract ZombieFeeding is ZombieFactory {
         _triggerCooldown(myZombie);
     }
 
-    function feedOnKitty(uint _zombieId, uint _kittyId) public {
-        uint kittyDna;
+    function feedOnKitty(uint256 _zombieId, uint256 _kittyId) public {
+        uint256 kittyDna;
         /* Is the way to only get the last value returned by getKitty method */
         (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
         feedAndMultiply(_zombieId, kittyDna, "kitty");
