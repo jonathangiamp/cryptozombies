@@ -7,12 +7,12 @@ contract ZombieHelper is ZombieFeeding {
   uint levelUpFee = 0.001 ether;
 
   modifier aboveLevel(uint _level, uint _zombieId) {
-      require (zombies[_zombieId].level >= _level, "Your Zombie doesn't have the required level to perform this");
+      require (zombies[_zombieId].level >= _level);
       _;
   }
 
   function withdraw() external onlyOwner {
-    owner.transfer(this.balance);
+    owner.transfer(address(this).balance);
   }
 
   function setLevelUpFee(uint _fee) external onlyOwner {
@@ -20,7 +20,7 @@ contract ZombieHelper is ZombieFeeding {
   }
 
   function levelUp(uint _zombieId) external payable {
-      require(msg.value == levelUpFee, "Please send the exact amount to level your Zombie");
+      require(msg.value == levelUpFee);
       zombies[_zombieId].level = zombies[_zombieId].level.add(1);
   }
 
