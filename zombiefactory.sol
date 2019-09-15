@@ -44,7 +44,7 @@ contract ZombieFactory is Ownable {
     }
 
     function createRandomZombie(string _name) public {
-        require(ownerZombieCount[msg.sender] == 0);
+        require(ownerZombieCount[msg.sender] == 0, "You already have a Zombie");
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
     }
