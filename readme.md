@@ -1,6 +1,6 @@
 # CryptoZombies
 
-Cryptozombie is a dApp hosted into the Ethereum blockchain, it's an educational game project written in solidity.
+Cryptozombie is a dApp hosted into the Ethereum blockchain, it's an game project that allowed me to learn solidity basics. It is based on the excellent loom course you can find [here](https://cryptozombies.io/).
 With Cryptozombies, create your own zombie and fight against other zombies to level up! Do you want an army? No problem, find a cute Cryptokitty and eat it to create new zombie based on kitty's DNA!
 Each zombie will be unique so don't waste time, let's create yours!
 
